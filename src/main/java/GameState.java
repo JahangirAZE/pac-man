@@ -1,10 +1,22 @@
+import lombok.Getter;
+import lombok.Setter;
+
 public class GameState {
-    private int score;
-    private int lives;
-    private int dotsEaten;
+    @Setter
+    @Getter
     private boolean gameOver;
+    @Setter
+    @Getter
     private boolean won;
+    @Getter
+    private int score;
+    @Getter
+    private int lives;
+    @Getter
+    private int dotsEaten;
+    @Getter
     private boolean powerMode;
+
     private int powerModeTimer;
 
     public GameState() {
@@ -37,14 +49,4 @@ public class GameState {
             }
         }
     }
-
-    public int getScore() { return score; }
-    public int getLives() { return lives; }
-    public int getDotsEaten() { return dotsEaten; }
-    public boolean isGameOver() { return gameOver; }
-    public boolean isWon() { return won; }
-    public boolean isPowerMode() { return powerMode; }
-
-    public void setGameOver(boolean gameOver) { this.gameOver = gameOver; }
-    public void setWon(boolean won) { this.won = won; }
 }

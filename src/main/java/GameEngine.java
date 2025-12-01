@@ -1,3 +1,5 @@
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,6 +8,7 @@ import static java.awt.Color.ORANGE;
 import static java.awt.Color.PINK;
 import static java.awt.Color.RED;
 
+@Getter
 public class GameEngine {
     private final Maze maze;
     private final PacMan pacMan;
@@ -48,14 +51,14 @@ public class GameEngine {
 
     private void handlePacManCollision() {
         Position pos = pacMan.getPosition();
-        int cell = maze.getCell(pos.getX(), pos.getY());
+        int cell = maze.getCell(pos.x(), pos.y());
 
         if (cell == Constants.DOT) {
-            maze.setCell(pos.getX(), pos.getY(), Constants.EMPTY);
+            maze.setCell(pos.x(), pos.y(), Constants.EMPTY);
             state.addScore(Constants.POINTS_DOT);
             state.eatDot();
         } else if (cell == Constants.POWER_PELLET) {
-            maze.setCell(pos.getX(), pos.getY(), Constants.EMPTY);
+            maze.setCell(pos.x(), pos.y(), Constants.EMPTY);
             state.addScore(Constants.POINTS_POWER_PELLET);
             state.eatDot();
             state.activatePowerMode();
@@ -86,9 +89,4 @@ public class GameEngine {
         }
         state.reset();
     }
-
-    public Maze getMaze() { return maze; }
-    public PacMan getPacMan() { return pacMan; }
-    public List<Ghost> getGhosts() { return ghosts; }
-    public GameState getState() { return state; }
 }

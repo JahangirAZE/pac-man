@@ -1,3 +1,6 @@
+import lombok.Getter;
+
+@Getter
 public enum Direction {
     RIGHT(0, 1, 0),
     DOWN(1, 0, 1),
@@ -13,10 +16,6 @@ public enum Direction {
         this.dx = dx;
         this.dy = dy;
     }
-
-    public int getAngle() { return angle; }
-    public int getDx() { return dx; }
-    public int getDy() { return dy; }
 
     public static Direction fromKeyCode(int keyCode) {
         return switch (keyCode) {
