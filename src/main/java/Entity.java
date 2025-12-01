@@ -9,7 +9,6 @@ abstract class Entity {
 
     public Position getPosition() { return position; }
     public Direction getDirection() { return direction; }
-    public void setDirection(Direction dir) { this.direction = dir; }
 
     public abstract void move(Maze maze);
 }

@@ -1,23 +1,31 @@
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.awt.Color.CYAN;
+import static java.awt.Color.ORANGE;
+import static java.awt.Color.PINK;
+import static java.awt.Color.RED;
+
 public class GameEngine {
     private final Maze maze;
     private final PacMan pacMan;
-    private final java.util.List<Ghost> ghosts;
+    private final List<Ghost> ghosts;
     private final GameState state;
 
     public GameEngine() {
         this.maze = new Maze();
         this.pacMan = new PacMan(1, 1);
-        this.ghosts = new java.util.ArrayList<>();
+        this.ghosts = new ArrayList<>();
         this.state = new GameState();
 
         initializeGhosts();
     }
 
     private void initializeGhosts() {
-        ghosts.add(new Ghost(9, 9, java.awt.Color.RED));
-        ghosts.add(new Ghost(8, 9, java.awt.Color.PINK));
-        ghosts.add(new Ghost(10, 9, java.awt.Color.CYAN));
-        ghosts.add(new Ghost(9, 10, java.awt.Color.ORANGE));
+        ghosts.add(new Ghost(9, 9, RED));
+        ghosts.add(new Ghost(8, 9, PINK));
+        ghosts.add(new Ghost(10, 9, CYAN));
+        ghosts.add(new Ghost(9, 10, ORANGE));
     }
 
     public void update() {
@@ -81,6 +89,6 @@ public class GameEngine {
 
     public Maze getMaze() { return maze; }
     public PacMan getPacMan() { return pacMan; }
-    public java.util.List<Ghost> getGhosts() { return ghosts; }
+    public List<Ghost> getGhosts() { return ghosts; }
     public GameState getState() { return state; }
 }

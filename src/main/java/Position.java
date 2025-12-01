@@ -9,11 +9,9 @@ public class Position {
 
     public int getX() { return x; }
     public int getY() { return y; }
-    public void setX(int x) { this.x = x; }
-    public void setY(int y) { this.y = y; }
 
-    public Position getNextPosition(Direction dir) {
-        return new Position(x + dir.getDx(), y + dir.getDy());
+    public Position getNextPosition(Direction direction) {
+        return new Position(x + direction.getDx(), y + direction.getDy());
     }
 
     public boolean equals(Position other) {
@@ -21,9 +19,9 @@ public class Position {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Position) {
-            return equals((Position) obj);
+    public boolean equals(Object object) {
+        if (object instanceof Position) {
+            return equals((Position) object);
         }
         return false;
     }

@@ -1,16 +1,19 @@
+import java.awt.Color;
+import java.util.Random;
+
 public class Ghost extends Entity {
-    private final java.awt.Color color;
-    private final java.util.Random random;
+    private final Color color;
+    private final Random random;
     private final Position homePosition;
 
     public Ghost(int x, int y, java.awt.Color color) {
-        super(x, y, Direction.values()[new java.util.Random().nextInt(4)]);
+        super(x, y, Direction.values()[new Random().nextInt(4)]);
         this.color = color;
-        this.random = new java.util.Random();
+        this.random = new Random();
         this.homePosition = new Position(x, y);
     }
 
-    public java.awt.Color getColor() { return color; }
+    public Color getColor() { return color; }
 
     @Override
     public void move(Maze maze) {
