@@ -1,3 +1,5 @@
+import lombok.Getter;
+
 public class Maze {
     private final int[][] grid = {
             {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -24,7 +26,9 @@ public class Maze {
             {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
     };
 
+    @Getter
     private int[][] currentState;
+    @Getter
     private int totalDots;
 
     public Maze() {
@@ -59,11 +63,9 @@ public class Maze {
     }
 
     public boolean isWalkable(Position pos) {
-        return getCell(pos.getX(), pos.getY()) != Constants.WALL;
+        return getCell(pos.x(), pos.y()) != Constants.WALL;
     }
 
     public int getWidth() { return currentState[0].length; }
     public int getHeight() { return currentState.length; }
-    public int getTotalDots() { return totalDots; }
-    public int[][] getCurrentState() { return currentState; }
 }

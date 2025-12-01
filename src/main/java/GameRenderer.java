@@ -41,8 +41,8 @@ public class GameRenderer {
 
         g.setColor(Color.YELLOW);
         int mouth = (int)(System.currentTimeMillis() / 100 % 2) * 30;
-        g.fillArc(pos.getX() * Constants.CELL_SIZE + 2,
-                pos.getY() * Constants.CELL_SIZE + 2,
+        g.fillArc(pos.x() * Constants.CELL_SIZE + 2,
+                pos.y() * Constants.CELL_SIZE + 2,
                 Constants.CELL_SIZE - 4, Constants.CELL_SIZE - 4,
                 dir.getAngle() * 90 + mouth, 360 - mouth * 2);
     }
@@ -52,15 +52,15 @@ public class GameRenderer {
             Position pos = ghost.getPosition();
 
             g.setColor(powerMode ? Color.BLUE : ghost.getColor());
-            g.fillOval(pos.getX() * Constants.CELL_SIZE + 2,
-                    pos.getY() * Constants.CELL_SIZE + 2,
+            g.fillOval(pos.x() * Constants.CELL_SIZE + 2,
+                    pos.y() * Constants.CELL_SIZE + 2,
                     Constants.CELL_SIZE - 4, Constants.CELL_SIZE - 4);
 
             g.setColor(Color.WHITE);
-            g.fillOval(pos.getX() * Constants.CELL_SIZE + 8,
-                    pos.getY() * Constants.CELL_SIZE + 8, 6, 8);
-            g.fillOval(pos.getX() * Constants.CELL_SIZE + 16,
-                    pos.getY() * Constants.CELL_SIZE + 8, 6, 8);
+            g.fillOval(pos.x() * Constants.CELL_SIZE + 8,
+                    pos.y() * Constants.CELL_SIZE + 8, 6, 8);
+            g.fillOval(pos.x() * Constants.CELL_SIZE + 16,
+                    pos.y() * Constants.CELL_SIZE + 8, 6, 8);
         }
     }
 
@@ -78,17 +78,17 @@ public class GameRenderer {
 
         if (state.isGameOver()) {
             g.setColor(Color.RED);
-            g.setFont(new Font("Arial", java.awt.Font.BOLD, 36));
+            g.setFont(new Font("Arial", Font.BOLD, 36));
             g.drawString("GAME OVER", 150, mazeHeight * Constants.CELL_SIZE / 2);
-            g.setFont(new Font("Arial", java.awt.Font.PLAIN, 16));
+            g.setFont(new Font("Arial", Font.PLAIN, 16));
             g.drawString("Press R to Restart", 180, mazeHeight * Constants.CELL_SIZE / 2 + 40);
         }
 
         if (state.isWon()) {
             g.setColor(Color.GREEN);
-            g.setFont(new Font("Arial", java.awt.Font.BOLD, 36));
+            g.setFont(new Font("Arial", Font.BOLD, 36));
             g.drawString("YOU WIN!", 170, mazeHeight * Constants.CELL_SIZE / 2);
-            g.setFont(new Font("Arial", java.awt.Font.PLAIN, 16));
+            g.setFont(new Font("Arial", Font.PLAIN, 16));
             g.drawString("Press R to Restart", 180, mazeHeight * Constants.CELL_SIZE / 2 + 40);
         }
     }

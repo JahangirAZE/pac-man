@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Objects;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
     private final GameEngine engine;
@@ -43,10 +44,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
-        Direction dir = Direction.fromKeyCode(keyCode);
+        Direction direction = Direction.fromKeyCode(keyCode);
 
-        if (dir != null) {
-            engine.getPacMan().setNextDirection(dir);
+        if (Objects.nonNull(direction)) {
+            engine.getPacMan().setNextDirection(direction);
         } else if (keyCode == 82) {
             if (engine.getState().isGameOver() || engine.getState().isWon()) {
                 engine.reset();

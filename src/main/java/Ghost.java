@@ -1,19 +1,20 @@
+import lombok.Getter;
+
 import java.awt.Color;
 import java.util.Random;
 
 public class Ghost extends Entity {
+    @Getter
     private final Color color;
     private final Random random;
     private final Position homePosition;
 
-    public Ghost(int x, int y, java.awt.Color color) {
+    public Ghost(int x, int y, Color color) {
         super(x, y, Direction.values()[new Random().nextInt(4)]);
         this.color = color;
         this.random = new Random();
         this.homePosition = new Position(x, y);
     }
-
-    public Color getColor() { return color; }
 
     @Override
     public void move(Maze maze) {
@@ -31,7 +32,7 @@ public class Ghost extends Entity {
     }
 
     public void reset() {
-        position = new Position(homePosition.getX(), homePosition.getY());
+        position = new Position(homePosition.x(), homePosition.y());
         direction = Direction.values()[random.nextInt(4)];
     }
 }

@@ -16,14 +16,14 @@ public class PacMan extends Entity {
 
     @Override
     public void move(Maze maze) {
-        Position nextPos = position.getNextPosition(nextDirection);
-        if (maze.isWalkable(nextPos)) {
+        Position nextPosition = position.getNextPosition(nextDirection);
+        if (maze.isWalkable(nextPosition)) {
             direction = nextDirection;
         }
 
-        Position newPos = position.getNextPosition(direction);
-        if (maze.isWalkable(newPos)) {
-            position = newPos;
+        Position newPosition = position.getNextPosition(direction);
+        if (maze.isWalkable(newPosition)) {
+            position = newPosition;
         }
     }
 
