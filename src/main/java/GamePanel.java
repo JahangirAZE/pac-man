@@ -1,42 +1,47 @@
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
     private final GameEngine engine;
     private final GameRenderer renderer;
-    private final javax.swing.Timer timer;
 
     public GamePanel() {
         this.engine = new GameEngine();
         this.renderer = new GameRenderer();
 
         Maze maze = engine.getMaze();
-        setPreferredSize(new java.awt.Dimension(
+        setPreferredSize(new Dimension(
                 maze.getWidth() * Constants.CELL_SIZE,
                 maze.getHeight() * Constants.CELL_SIZE + 40));
-        setBackground(java.awt.Color.BLACK);
+        setBackground(Color.BLACK);
         setFocusable(true);
         addKeyListener(this);
 
-        timer = new javax.swing.Timer(Constants.GAME_SPEED, this);
+        Timer timer = new Timer(Constants.GAME_SPEED, this);
         timer.start();
     }
 
     @Override
-    protected void paintComponent(java.awt.Graphics g) {
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         renderer.render(g, engine);
     }
 
     @Override
-    public void actionPerformed(java.awt.event.ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {
         engine.update();
         repaint();
     }
 
     @Override
-    public void keyPressed(java.awt.event.KeyEvent e) {
+    public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         Direction dir = Direction.fromKeyCode(keyCode);
 
@@ -49,6 +54,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         }
     }
 
-    @Override public void keyTyped(java.awt.event.KeyEvent e) {}
-    @Override public void keyReleased(java.awt.event.KeyEvent e) {}
+    @Override public void keyTyped(KeyEvent e) {}
+    @Override public void keyReleased(KeyEvent e) {}
 }

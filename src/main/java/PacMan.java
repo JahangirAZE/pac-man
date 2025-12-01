@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class PacMan extends Entity {
     private Direction nextDirection;
 
@@ -7,7 +9,7 @@ public class PacMan extends Entity {
     }
 
     public void setNextDirection(Direction dir) {
-        if (dir != null) {
+        if (Objects.nonNull(dir)) {
             this.nextDirection = dir;
         }
     }
